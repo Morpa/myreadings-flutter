@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -45,7 +46,7 @@ class BookList extends ConsumerWidget {
           itemBuilder: (_, index) {
             return BookCard(
               book: Book.fromNotionPage(data[index]),
-            );
+            ).animate().fadeIn(duration: const Duration(seconds: 2));
           },
         );
       },
