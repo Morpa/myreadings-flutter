@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:super_banners/super_banners.dart';
 
 class StatusBanner extends StatelessWidget {
-  const StatusBanner(
-      {super.key, required this.progress, required this.isFinished});
+  const StatusBanner({
+    super.key,
+    required this.progress,
+    required this.isFinished,
+  });
 
   final int progress;
   final bool isFinished;
@@ -18,13 +21,13 @@ class StatusBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return CornerBanner(
       bannerPosition: CornerBannerPosition.topLeft,
       bannerColor: getBannerColor(),
       child: Text(
-        isFinished ? "#finished" : "#planned",
+        isFinished ? '#finished' : '#planned',
         style: textTheme.labelSmall,
       ),
     );

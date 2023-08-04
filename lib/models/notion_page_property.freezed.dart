@@ -23,7 +23,7 @@ mixin _$NotionPageProperty {
   String get id => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   List<NotionPropertyText>? get title => throw _privateConstructorUsedError;
-  @JsonKey(name: "rich_text")
+  @JsonKey(name: 'rich_text')
   List<NotionPropertyText>? get richText => throw _privateConstructorUsedError;
   bool? get checkbox => throw _privateConstructorUsedError;
   int? get number => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $NotionPagePropertyCopyWith<$Res> {
       {String id,
       String type,
       List<NotionPropertyText>? title,
-      @JsonKey(name: "rich_text") List<NotionPropertyText>? richText,
+      @JsonKey(name: 'rich_text') List<NotionPropertyText>? richText,
       bool? checkbox,
       int? number,
       String? url,
@@ -138,7 +138,7 @@ abstract class _$$_NotionPagePropertyCopyWith<$Res>
       {String id,
       String type,
       List<NotionPropertyText>? title,
-      @JsonKey(name: "rich_text") List<NotionPropertyText>? richText,
+      @JsonKey(name: 'rich_text') List<NotionPropertyText>? richText,
       bool? checkbox,
       int? number,
       String? url,
@@ -213,7 +213,7 @@ class _$_NotionPageProperty implements _NotionPageProperty {
       {required this.id,
       required this.type,
       final List<NotionPropertyText>? title,
-      @JsonKey(name: "rich_text") final List<NotionPropertyText>? richText,
+      @JsonKey(name: 'rich_text') final List<NotionPropertyText>? richText,
       this.checkbox,
       this.number,
       this.url,
@@ -240,7 +240,7 @@ class _$_NotionPageProperty implements _NotionPageProperty {
 
   final List<NotionPropertyText>? _richText;
   @override
-  @JsonKey(name: "rich_text")
+  @JsonKey(name: 'rich_text')
   List<NotionPropertyText>? get richText {
     final value = _richText;
     if (value == null) return null;
@@ -312,7 +312,7 @@ abstract class _NotionPageProperty implements NotionPageProperty {
       {required final String id,
       required final String type,
       final List<NotionPropertyText>? title,
-      @JsonKey(name: "rich_text") final List<NotionPropertyText>? richText,
+      @JsonKey(name: 'rich_text') final List<NotionPropertyText>? richText,
       final bool? checkbox,
       final int? number,
       final String? url,
@@ -328,7 +328,7 @@ abstract class _NotionPageProperty implements NotionPageProperty {
   @override
   List<NotionPropertyText>? get title;
   @override
-  @JsonKey(name: "rich_text")
+  @JsonKey(name: 'rich_text')
   List<NotionPropertyText>? get richText;
   @override
   bool? get checkbox;

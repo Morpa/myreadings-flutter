@@ -24,7 +24,7 @@ mixin _$NotionPropertyText {
   NotionPropertyTextContent? get text => throw _privateConstructorUsedError;
   NotionPropertyTextAnnotation? get annotations =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: "plain_text")
+  @JsonKey(name: 'plain_text')
   String? get plainText => throw _privateConstructorUsedError;
   String? get href => throw _privateConstructorUsedError;
 
@@ -44,7 +44,7 @@ abstract class $NotionPropertyTextCopyWith<$Res> {
       {String type,
       NotionPropertyTextContent? text,
       NotionPropertyTextAnnotation? annotations,
-      @JsonKey(name: "plain_text") String? plainText,
+      @JsonKey(name: 'plain_text') String? plainText,
       String? href});
 
   $NotionPropertyTextContentCopyWith<$Res>? get text;
@@ -132,7 +132,7 @@ abstract class _$$_NotionPropertyTextCopyWith<$Res>
       {String type,
       NotionPropertyTextContent? text,
       NotionPropertyTextAnnotation? annotations,
-      @JsonKey(name: "plain_text") String? plainText,
+      @JsonKey(name: 'plain_text') String? plainText,
       String? href});
 
   @override
@@ -190,7 +190,7 @@ class _$_NotionPropertyText implements _NotionPropertyText {
       {required this.type,
       this.text,
       this.annotations,
-      @JsonKey(name: "plain_text") this.plainText,
+      @JsonKey(name: 'plain_text') this.plainText,
       this.href});
 
   factory _$_NotionPropertyText.fromJson(Map<String, dynamic> json) =>
@@ -203,7 +203,7 @@ class _$_NotionPropertyText implements _NotionPropertyText {
   @override
   final NotionPropertyTextAnnotation? annotations;
   @override
-  @JsonKey(name: "plain_text")
+  @JsonKey(name: 'plain_text')
   final String? plainText;
   @override
   final String? href;
@@ -252,7 +252,7 @@ abstract class _NotionPropertyText implements NotionPropertyText {
       {required final String type,
       final NotionPropertyTextContent? text,
       final NotionPropertyTextAnnotation? annotations,
-      @JsonKey(name: "plain_text") final String? plainText,
+      @JsonKey(name: 'plain_text') final String? plainText,
       final String? href}) = _$_NotionPropertyText;
 
   factory _NotionPropertyText.fromJson(Map<String, dynamic> json) =
@@ -265,7 +265,7 @@ abstract class _NotionPropertyText implements NotionPropertyText {
   @override
   NotionPropertyTextAnnotation? get annotations;
   @override
-  @JsonKey(name: "plain_text")
+  @JsonKey(name: 'plain_text')
   String? get plainText;
   @override
   String? get href;

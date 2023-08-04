@@ -1,8 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:myreadings/models/book.dart';
-import 'package:myreadings/pages/home/ui/status_banner.dart';
-import 'package:myreadings/utils/platform_utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '../../../models/book.dart';
+import '../../../utils/platform_utils.dart';
+import 'status_banner.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({super.key, required this.book});
@@ -11,8 +14,8 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Stack(
       children: [
@@ -23,32 +26,45 @@ class BookCard extends StatelessWidget {
               vertical: 12,
             ),
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Flexible(
-                  flex: 1,
+                Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(right: 16),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8), // Image border
-                      child: Image.network(book.cover),
+                      borderRadius: BorderRadius.circular(8),
+                      child: ExtendedImage.network(
+                        book.cover,
+                        fit: BoxFit.cover,
+                        cache: true,
+                      ),
                     ),
                   ),
                 ),
-                Flexible(
-                  flex: 3,
+                Expanded(
+                  flex: 2,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
+                      AutoSizeText(
                         book.title,
                         style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        book.author,
-                        style: textTheme.bodyMedium,
+                        maxLines: 2,
+                        minFontSize: 12,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(
-                        height: 8,
+                        height: 4,
+                      ),
+                      AutoSizeText(
+                        book.author,
+                        style: textTheme.bodyMedium,
+                        maxLines: 1,
+                        minFontSize: 12,
+                      ),
+                      const SizedBox(
+                        height: 18,
                       ),
                       if (!book.isFinished && book.progress > 0)
                         LinearPercentIndicator(
@@ -57,7 +73,7 @@ class BookCard extends StatelessWidget {
                           lineHeight: 8,
                           barRadius: const Radius.circular(8),
                           trailing: Text(
-                            "${book.progress.toString()} %",
+                            '${book.progress.toString()} %',
                             style: const TextStyle(
                               fontSize: 12,
                             ),
@@ -66,17 +82,20 @@ class BookCard extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.amber[300],
-                                foregroundColor: Colors.black87),
-                            onPressed: () => openExternalURL(book.link),
-                            child: const Text("Buy on Amazon"),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber[300],
+                            foregroundColor: Colors.black87,
                           ),
-                        ],
+                          onPressed: () => openExternalURL(book.link),
+                          child: const AutoSizeText(
+                            'Buy on Amazon',
+                            maxLines: 1,
+                            minFontSize: 10,
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 8,

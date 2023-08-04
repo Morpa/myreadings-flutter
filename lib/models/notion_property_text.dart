@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors, invalid_annotation_target
-
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:myreadings/models/notion_property_text_annotation.dart';
-import 'package:myreadings/models/notion_property_text_content.dart';
+
+import 'notion_property_text_annotation.dart';
+import 'notion_property_text_content.dart';
 
 part 'notion_property_text.freezed.dart';
 part 'notion_property_text.g.dart';
@@ -13,7 +12,7 @@ class NotionPropertyText with _$NotionPropertyText {
     required String type,
     NotionPropertyTextContent? text,
     NotionPropertyTextAnnotation? annotations,
-    @JsonKey(name: "plain_text") String? plainText,
+    @JsonKey(name: 'plain_text') String? plainText,
     String? href,
   }) = _NotionPropertyText;
 

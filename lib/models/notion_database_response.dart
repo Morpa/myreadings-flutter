@@ -17,6 +17,8 @@ class NotionDatabaseResponse<T> with _$NotionDatabaseResponse<T> {
   const NotionDatabaseResponse._();
 
   factory NotionDatabaseResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) =>
       _$NotionDatabaseResponseFromJson(json, fromJsonT);
 }

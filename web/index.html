@@ -1,65 +1,170 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <base href="$FLUTTER_BASE_HREF" />
 
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8" />
+    <meta
+      content="IE=Edge"
+      http-equiv="X-UA-Compatible" />
+    <meta
+      name="description"
+      content="Web app to show a reading list built with Flutter and Notion" />
+    <meta
+      name="keywords"
+      content="flutter web, flutter, notion, reading list, app development, productivity, web app, cross-platform, netlify, cloudflare worker, cloudflare" />
+    <meta
+      name="author"
+      content="Morpa" />
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <!-- iOS meta tags & icons -->
+    <meta
+      name="apple-mobile-web-app-capable"
+      content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="myreadings" />
+    <link
+      rel="apple-touch-icon"
+      href="icons/Icon-192.png" />
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="favicon.png" />
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+    <title>My Reading List with Notion and Flutter Web</title>
+    <link
+      rel="manifest"
+      href="manifest.json" />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Web app to show a reading list built with Flutter and Notion">
-  <meta name="keywords"
-    content="flutter web, flutter, notion, reading list, app development, productivity, web app, cross-platform, netlify, cloudflare worker, cloudflare">
-  <meta name="author" content="Alberto Bonacina">
+    <script>
+      // The value below is injected by flutter build, do not touch.
+      var serviceWorkerVersion = null;
+    </script>
+    <!-- This script adds the flutter initialization JS code -->
+    <script
+      src="flutter.js"
+      defer></script>
+  </head>
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="myreadings">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <body>
+    <style>
+      body {
+        background-color: #1a1c1d;
+        height: 100vh;
+        width: 100vw;
+        margin: 0px;
+      }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+      .main-content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.4s ease-out;
+      }
+      /* ===== Loader CSS 👇 =====*/
+      img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
 
-  <title>My Reading List with Notion and Flutter Web</title>
-  <link rel="manifest" href="manifest.json">
+      .loader {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+        animation: animate 1.2s linear infinite;
+      }
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-
-<body>
-  <script>
-    window.addEventListener('load', function (ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function (engineInitializer) {
-          engineInitializer.initializeEngine().then(function (appRunner) {
-            appRunner.runApp();
-          });
+      @keyframes animate {
+        0% {
+          transform: rotate(0deg);
         }
-      });
-    });
-  </script>
-</body>
 
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loader span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 60%;
+        background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+      }
+
+      .loader span:nth-child(1) {
+        filter: blur(5px);
+      }
+
+      .loader span:nth-child(2) {
+        filter: blur(10px);
+      }
+
+      .loader span:nth-child(3) {
+        filter: blur(25px);
+      }
+
+      .loader span:nth-child(4) {
+        filter: blur(50px);
+      }
+
+      .loader:after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background: #1a1c1d;
+        border-radius: 50%;
+      }
+    </style>
+    <script>
+      function delay(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+
+      window.addEventListener('load', function (ev) {
+        var loaderContent = document.querySelector('#loader-content');
+
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function (engineInitializer) {
+            engineInitializer.initializeEngine().then(async function (appRunner) {
+              loaderContent.style.opacity = '0';
+              await delay(400);
+              await appRunner.runApp();
+            });
+          },
+        });
+      });
+    </script>
+
+    <div
+      class="main-content"
+      id="loader-content">
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <img
+        src="assets/books.png"
+        alt="My App Logo" />
+    </div>
+  </body>
 </html>

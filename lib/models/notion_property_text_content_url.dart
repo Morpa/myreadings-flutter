@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'notion_property_text_content_url.freezed.dart';

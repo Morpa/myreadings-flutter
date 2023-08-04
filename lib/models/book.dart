@@ -1,4 +1,4 @@
-import 'package:myreadings/models/notion_page.dart';
+import 'notion_page.dart';
 
 class Book {
   late String title;
@@ -14,29 +14,29 @@ class Book {
   Book();
 
   Book.fromNotionPage(NotionPage notionPage) {
-    title = notionPage.properties!["Title"]!.title!.first.plainText != null
-        ? notionPage.properties!["Title"]!.title!.first.plainText!.trim()
-        : (notionPage.properties!["Title"]!.title!.first.text != null
-            ? notionPage.properties!["Title"]!.title!.first.text!.content.trim()
-            : "");
+    title = notionPage.properties!['Title']!.title!.first.plainText != null
+        ? notionPage.properties!['Title']!.title!.first.plainText!.trim()
+        : (notionPage.properties!['Title']!.title!.first.text != null
+            ? notionPage.properties!['Title']!.title!.first.text!.content.trim()
+            : '');
 
     createdTime = DateTime.parse(notionPage.createdTime);
     lastEditedTime = DateTime.parse(notionPage.lastEditedTime);
 
-    isFinished = notionPage.properties!["Finished"]!.checkbox ?? false;
-    cover = notionPage.properties!["Cover"]!.url ?? "";
-    date = notionPage.properties!["Date"]!.date != null
-        ? notionPage.properties!["Date"]!.date!.start!
-        : "";
+    isFinished = notionPage.properties!['Finished']!.checkbox ?? false;
+    cover = notionPage.properties!['Cover']!.url ?? '';
+    date = notionPage.properties!['Date']!.date != null
+        ? notionPage.properties!['Date']!.date!.start!
+        : '';
 
-    author = notionPage.properties!["Author"]!.richText!.first.plainText != null
-        ? notionPage.properties!["Author"]!.richText!.first.plainText!.trim()
-        : (notionPage.properties!["Author"]!.richText!.first.text != null
-            ? notionPage.properties!["Author"]!.richText!.first.text!.content
+    author = notionPage.properties!['Author']!.richText!.first.plainText != null
+        ? notionPage.properties!['Author']!.richText!.first.plainText!.trim()
+        : (notionPage.properties!['Author']!.richText!.first.text != null
+            ? notionPage.properties!['Author']!.richText!.first.text!.content
                 .trim()
-            : "");
+            : '');
 
-    progress = notionPage.properties!["Progress"]!.number ?? 0;
-    link = notionPage.properties!["Link"]!.url ?? "";
+    progress = notionPage.properties!['Progress']!.number ?? 0;
+    link = notionPage.properties!['Link']!.url ?? '';
   }
 }
