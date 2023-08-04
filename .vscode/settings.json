@@ -1,0 +1,12 @@
+{
+  "dart.flutterHotReloadOnSave": "never",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "command-runner.commands": {
+    "pub get": "flutter pub get",
+    "build_runner": "dart run build_runner build",
+    "build_runner delete conflictings": "dart run build_runner build --delete-conflicting-outputs"
+  }
+}
